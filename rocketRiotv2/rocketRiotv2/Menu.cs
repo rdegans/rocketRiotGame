@@ -243,42 +243,53 @@ namespace rocketRiotv2
         {
             string[] newHighScores = new string[5];
             bool newHigh = false;
-            StreamReader sr = new StreamReader("HighScores.txt");
-            for (int i = 0; i < 5; i++)
+            try
             {
-                highScores[i] = sr.ReadLine();
-            }
-            sr.Close();
-            StreamWriter sw = new StreamWriter("HighScores.txt");
-            for (int i = 0; i < 5; i++)
-            {
-                try
+                StreamReader sr = new StreamReader("highScores.txt");
+                for (int i = 0; i < 5; i++)
                 {
-                    int currentScore;
-                    int.TryParse(highScores[i].Split(',')[1], out currentScore);
-                    if (score > currentScore && !newHigh)
+                    highScores[i] = sr.ReadLine();
+                }
+                sr.Close();
+            }
+            catch (FileNotFoundException) //exception for if the file does not exist
+            {
+            }
+            try
+            {
+                StreamWriter sw = new StreamWriter("highScores.txt");
+                for (int i = 0; i < 5; i++)
+                {
+                    try
                     {
-                        sw.WriteLine(txtName.Text + "," + score);
-                        newHigh = true;
-                        sw.WriteLine(highScores[i]);
+                        int currentScore;
+                        int.TryParse(highScores[i].Split(',')[1], out currentScore);
+                        if (score > currentScore && !newHigh)
+                        {
+                            sw.WriteLine(txtName.Text + "," + score);
+                            newHigh = true;
+                            sw.WriteLine(highScores[i]);
+                        }
+                        else
+                        {
+                            sw.WriteLine(highScores[i]);
+                        }
                     }
-                    else
+                    catch
                     {
-                        sw.WriteLine(highScores[i]);
-                        //not writing when replacing
+                        if (!newHigh)
+                        {
+                            sw.WriteLine(txtName.Text + "," + score);
+                            newHigh = true;
+                        }
                     }
                 }
-                catch
-                {
-                    if (!newHigh)
-                    {
-                        sw.WriteLine(txtName.Text + "," + score);
-                        newHigh = true;
-                    }
+                sw.Flush();
+                sw.Close();
                 }
-            }
-            sw.Flush();
-            sw.Close();
+                catch (FileNotFoundException) //exception for if the file does not exist
+                {
+                }
             canvas.Children.Add(btnStartGame);
             canvas.Children.Add(btnHighScores);
             canvas.Children.Add(btnInstruct);
@@ -331,13 +342,19 @@ namespace rocketRiotv2
             canvas.Children.Remove(btnInstruct);
             canvas.Children.Add(btnBack);
             canvas.Children.Add(lblHighScores);
-            StreamReader sr = new StreamReader("HighScores.txt");
+            try
+            {
+            StreamReader sr = new StreamReader("highScores.txt");
             for (int i = 0; i < 5; i++)
             {
                 string readingScore = sr.ReadLine();
                 highScores[i] = readingScore;
             }
             sr.Close();
+            }
+            catch (FileNotFoundException) //exception for if the file does not exist
+            {
+            }
             lblHighScores.Content = "";
             for (int i = 0; i < 5; i++)
             {

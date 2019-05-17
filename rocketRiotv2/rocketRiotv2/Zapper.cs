@@ -32,6 +32,12 @@ namespace rocketRiotv2
         private Rectangle[] zappers = new Rectangle[4];
         private Polyline[] hitPoints = new Polyline[4];
         private int orientation;
+        /// <summary>
+        /// Description: Creates instance of the zapper class
+        /// Author:
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="r"></param>
         public Zapper(Canvas c, Random r)
         {
             canvas = c;
@@ -43,6 +49,10 @@ namespace rocketRiotv2
                 zappers[i].Height = 200;//change back
             }
         }
+        /// <summary>
+        /// Description: Adds the zappers to the canvas and rotates them and creates hitboxes
+        /// Author: Riley de Gans and Nathan Pereboom
+        /// </summary>
         public void generate()
         {
             for (int i = 0; i < 4; i++)
@@ -104,6 +114,11 @@ namespace rocketRiotv2
                 }
             }
         }
+        /// <summary>
+        /// Description: Returns all the hitpoints for intersection with the player
+        /// Author: Riley de Gans and Nathan Pereboom
+        /// </summary>
+        /// <returns></returns>
         public PointCollection locations()
         {
             PointCollection returnPoints = new PointCollection();
@@ -125,6 +140,10 @@ namespace rocketRiotv2
             }
             return returnPoints;
         }
+        /// <summary>
+        /// Description: Resets the values and canvas positon of the zappers at the end of the game
+        /// Author:
+        /// </summary>
         public void reset()
         {
             for (int i = 0; i < 4; i++)

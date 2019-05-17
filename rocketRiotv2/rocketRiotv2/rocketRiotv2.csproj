@@ -99,9 +99,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="highScores.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="playerPoints.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

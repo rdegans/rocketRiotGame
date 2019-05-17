@@ -15,4 +15,3 @@ C:\Users\Riley de Gans\Documents\ICS4UR\rocketRiotv2\rocketRiotv2\obj\Debug\rock
 C:\Users\Riley de Gans\Documents\ICS4UR\rocketRiotv2\rocketRiotv2\obj\Debug\rocketRiotv2.pdb
 C:\Users\Riley de Gans\Documents\ICS4UR\rocketRiotv2\rocketRiotv2\bin\Debug\playerPoints.txt
 C:\Users\Riley de Gans\Documents\ICS4UR\rocketRiotv2\rocketRiotv2\obj\Debug\rocketRiotv2_Content.g.cs
-C:\Users\Riley de Gans\Documents\ICS4UR\rocketRiotv2\rocketRiotv2\bin\Debug\highScores.txt
