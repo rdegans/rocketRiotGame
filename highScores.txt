@@ -1,5 +1,2 @@
-Name,22
-Name,10
-Name,,0
-Name,0
-Name,0
+﻿riley,100
+ben,100
